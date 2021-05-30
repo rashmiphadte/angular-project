@@ -31,7 +31,7 @@ export class ServiceService {
     let options = {
       headers: headers
     }
-    return this.http.post<any>(this.baseUrl + '/employee', null, options);
+    return this.http.post<any>(this.baseUrl + '/employee', '', options);
   }
 
   getAllEmployees() {
@@ -108,5 +108,77 @@ export class ServiceService {
     return this.http.get<any>(this.baseUrl + '/performance', options).pipe(map(res => {
       return res;
     }));
+  }
+
+  addReview(inputs) {
+    let token = sessionStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Accept': 'application/json, text/plain, application/xml,  */*',
+      "Content-Type": "application/json",
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Authorization': `Bearer ${token}`
+    });
+    let options = {
+      headers: headers
+    }
+    return this.http.post<any>(this.baseUrl + '/performance/add', inputs, options);
+  }
+
+  deleteReview(inputs) {
+    let token = sessionStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Accept': 'application/json, text/plain, application/xml,  */*',
+      "Content-Type": "application/json",
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Authorization': `Bearer ${token}`
+    });
+    let options = {
+      headers: headers
+    }
+    return this.http.post<any>(this.baseUrl + '/performance/delete/' + inputs, '', options);
+  }
+
+  updateReview(inputs, id) {
+    let token = sessionStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Accept': 'application/json, text/plain, application/xml,  */*',
+      "Content-Type": "application/json",
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Authorization': `Bearer ${token}`
+    });
+    let options = {
+      headers: headers
+    }
+    return this.http.post<any>(this.baseUrl + '/performance/update/' + id, inputs, options);
+  }
+
+
+  assignEmployee(inputs, id) {
+    let token = sessionStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Accept': 'application/json, text/plain, application/xml,  */*',
+      "Content-Type": "application/json",
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Authorization': `Bearer ${token}`
+    });
+    let options = {
+      headers: headers
+    }
+    return this.http.post<any>(this.baseUrl + '/performance/assign-employee/' + id, inputs, options);
+  }
+
+  getAssignedReviews() {
+    let token = sessionStorage.getItem('token');
+    let headers = new HttpHeaders({
+      'Accept': 'application/json, text/plain, application/xml,  */*',
+      "Content-Type": "application/json",
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Authorization': `Bearer ${token}`
+    });
+    let options = {
+      headers: headers
+    }
+    let id = sessionStorage.getItem('emp_id')
+    return this.http.post<any>(this.baseUrl + '/performance/list-reviews/' + id, '', options);
   }
 }

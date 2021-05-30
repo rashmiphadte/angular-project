@@ -12,6 +12,9 @@
         <th>Goal achievement</th>
         <th>Suggestions</th>
         <th>Comments</th>
+        <th>Review period</th>
+        <th>Review date</th>
+        <!-- <th>Assigned Employees</th> -->
         <th>Action</th>
       </tr>
     </thead>
@@ -20,12 +23,16 @@
         <td>{{p.emp_id.name}}</td>
         <td>{{p.emp_id.emp_code}}</td>
         <td>{{p.work_performance}}</td>
-        <td>{{p.goal_achievement}}</td>
+        <td>{{p.goal_achivement}}</td>
         <td>{{p.suggestions}}</td>
         <td>{{p.comments}}</td>
+        <td>{{p.review_period}}</td>
+        <td>{{p.review_date}}</td>
+        <!-- <td>{{p.employees}}</td> -->
         <td><a (click)="editReview(p)">Edit</a>
           <a class="ml-3" (click)="deleteReview(p._id)">Delete</a>
         </td>
+        <td><input type="button" value="Assign Employee" (click)="assignEmployee(p)"></td>
 
       </tr>
       <tr *ngIf="reviews.length === 0">
@@ -78,6 +85,20 @@
             <label for="Mobile">Comments<span class="red">*</span> :</label>
             <input type="text" class="form-control" formControlName="comments" />
           </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Review period<span class="red">*</span> :</label>
+            <input type="text" class="form-control" formControlName="review_period" />
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="assignEmp">
+        <div class="col-sm-4">
+          <ng-multiselect-dropdown [placeholder]="'Select Options'" [settings]="dropdownSettings"
+            style="border-radius: 2em !important;" [data]="dropdownList" [(ngModel)]="selectedItems"
+            [ngModelOptions]="{standalone: true}">
+          </ng-multiselect-dropdown>
         </div>
       </div>
 

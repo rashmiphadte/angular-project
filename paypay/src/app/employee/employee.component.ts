@@ -38,10 +38,12 @@ export class EmployeeComponent implements OnInit {
   }
   deleteEmployee(id) {
     this.api.deleteEmployee(id).subscribe(res => {
-      // if(res.status){
-      this.toastr.successToastr("Employee removed successfully", null, { showCloseButton: true });
+      if (res.status) {
+        this.toastr.successToastr("Employee removed successfully", null, { showCloseButton: true });
+      } else {
+        this.toastr.successToastr(res.message, null, { showCloseButton: true });
+      }
       this.getEmployees()
-      // }
     })
   }
 
