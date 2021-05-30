@@ -1,0 +1,164 @@
+<div>
+  <input type="button" value="Add Employee" (click)="showEmployeeForm = true">
+  <input type="button" value="Back" (click)="showEmployeeForm = false">
+</div>
+<div *ngIf="!showEmployeeForm">
+  <table class="table table-hover">
+    <thead class="text-dark text-bold">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Employee code</th>
+        <th>Designation</th>
+        <th>Department</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Gender</th>
+        <th>Education</th>
+        <th>Birthdate</th>
+        <th>Hire date</th>
+        <th>salary</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of employees ">
+        <td>{{p.name}}</td>
+        <td>{{p.email}}</td>
+        <td>{{p.emp_code}}</td>
+        <td>{{p.designation}}</td>
+        <td>{{p.department}}</td>
+        <td>{{p.address}}</td>
+        <td>{{p.phone}}</td>
+        <td>{{p.gender}}</td>
+        <td>{{p.education}}</td>
+        <td>{{p.birthdate}}</td>
+        <td>{{p.hire_date}}</td>
+        <td>{{p.salary}}</td>
+        <td><a (click)="editEmployee(p)">Edit</a>
+          <a class="ml-3" (click)="deleteEmployee(p._id)">Delete</a>
+        </td>
+
+      </tr>
+      <tr *ngIf="employees.length === 0">
+        <td colspan="4" class="text-center">No Records Found</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="showEmployeeForm">
+  <div className="login-wrapper">
+    <h1>Add employee</h1>
+    <form [formGroup]="employeeForm" (submit)="addEmployee()">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <div>
+              <label for="fullname">Name<span class="red">*</span>:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="name" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Email<span class="red">*</span> :</label>
+            <input type="email" class="form-control" formControlName="email" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Mobile<span class="red">*</span> :</label>
+            <input type="text" class="form-control" formControlName="phone" maxlength="10" pattern="[0-9]{1}[0-9]{9}" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <div>
+              <label for="fullname">Employee code<span class="red">*</span>:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="emp_code" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Designation<span class="red">*</span> :</label>
+            <input type="email" class="form-control" formControlName="designation" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Department<span class="red">*</span> :</label>
+            <input type="text" class="form-control" formControlName="department" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <div>
+              <label for="fullname">Address<span class="red">*</span>:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="address" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Gender<span class="red">*</span> :</label>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" formControlName="gender" value="Agent" />Male
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" formControlName="gender" value="Builder" />Female
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Education<span class="red">*</span> :</label>
+            <select class="form-control" formControlName="education">
+              <option> school </option>
+              <option>High school </option>
+              <option>Graduation </option>
+              <option>Post Graduation </option>
+              <option>PhD </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <div>
+              <label for="fullname">Birth Date<span class="red">*</span>:</label>
+            </div>
+            <input type="date" class="form-control" formControlName="birthdate" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Hire date<span class="red">*</span> :</label>
+            <input type="date" class="form-control" formControlName="hire_date" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Salary<span class="red">*</span> :</label>
+            <input type="text" class="form-control" formControlName="salary" maxlength="10" />
+          </div>
+        </div>
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+</div>

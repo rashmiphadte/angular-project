@@ -1,0 +1,90 @@
+<div>
+  <input type="button" value="Add Review" (click)="showReviewForm = true">
+  <input type="button" value="Back" (click)="showReviewForm = false">
+</div>
+<div *ngIf="!showReviewForm">
+  <table class="table table-hover">
+    <thead class="text-dark text-bold">
+      <tr>
+        <th>Name</th>
+        <th>Employee code</th>
+        <th>Work performance</th>
+        <th>Goal achievement</th>
+        <th>Suggestions</th>
+        <th>Comments</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of reviews ">
+        <td>{{p.emp_id.name}}</td>
+        <td>{{p.emp_id.emp_code}}</td>
+        <td>{{p.work_performance}}</td>
+        <td>{{p.goal_achievement}}</td>
+        <td>{{p.suggestions}}</td>
+        <td>{{p.comments}}</td>
+        <td><a (click)="editReview(p)">Edit</a>
+          <a class="ml-3" (click)="deleteReview(p._id)">Delete</a>
+        </td>
+
+      </tr>
+      <tr *ngIf="reviews.length === 0">
+        <td colspan="4" class="text-center">No Records Found</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="showReviewForm">
+  <div className="login-wrapper">
+    <h1>Add review</h1>
+    <form [formGroup]="reviewForm" (submit)="addReview()">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <div>
+              <label for="fullname">Employee<span class="red">*</span>:</label>
+            </div>
+            <select class="form-control" formControlName="emp_id">
+              <option *ngFor="let emp of employees" [value]="emp._id"> {{emp.name}} </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Work performance<span class="red">*</span> :</label>
+            <input type="text" class="form-control" formControlName="work_performance" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <div>
+              <label for="fullname">Goal Acheivement<span class="red">*</span>:</label>
+            </div>
+            <input type="text" class="form-control" formControlName="goal_achievement" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Suggestions<span class="red">*</span> :</label>
+            <input type="email" class="form-control" formControlName="suggestions" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="Mobile">Comments<span class="red">*</span> :</label>
+            <input type="text" class="form-control" formControlName="comments" />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+</div>
