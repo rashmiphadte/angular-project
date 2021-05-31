@@ -1,49 +1,55 @@
-<div>
-  <input type="button" value="Add Review" (click)="showReviewForm = true">
-  <input type="button" value="Back" (click)="showReviewForm = false">
-</div>
-<div *ngIf="!showReviewForm">
-  <table class="table table-hover">
-    <thead class="text-dark text-bold">
-      <tr>
-        <th>Name</th>
-        <th>Employee code</th>
-        <th>Work performance</th>
-        <th>Goal achievement</th>
-        <th>Suggestions</th>
-        <th>Comments</th>
-        <th>Review period</th>
-        <th>Review date</th>
-        <!-- <th>Assigned Employees</th> -->
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of reviews ">
-        <td>{{p.emp_id.name}}</td>
-        <td>{{p.emp_id.emp_code}}</td>
-        <td>{{p.work_performance}}</td>
-        <td>{{p.goal_achivement}}</td>
-        <td>{{p.suggestions}}</td>
-        <td>{{p.comments}}</td>
-        <td>{{p.review_period}}</td>
-        <td>{{p.review_date}}</td>
-        <!-- <td>{{p.employees}}</td> -->
-        <td><a (click)="editReview(p)">Edit</a>
-          <a class="ml-3" (click)="deleteReview(p._id)">Delete</a>
-        </td>
-        <td><input type="button" value="Assign Employee" (click)="assignEmployee(p)"></td>
-
-      </tr>
-      <tr *ngIf="reviews.length === 0">
-        <td colspan="4" class="text-center">No Records Found</td>
-      </tr>
-
-    </tbody>
-  </table>
+<div class=" container mt-3">
+  <a [routerLink]="['/dashboard']" style="padding: 10px;">Dashboard</a>
+  <input type="button" value="Add Review" style="padding: 10px;" (click)="showReviewForm = true">
+  <input type="button" value="Back" style="padding: 10px;    margin-left: 10px;" *ngIf="showReviewForm"
+    (click)="showReviewForm = false">
 </div>
 
-<div *ngIf="showReviewForm">
+<div class="container">
+  <div class="row" *ngIf="!showReviewForm">
+    <table class="table table-hover">
+      <thead class="text-dark text-bold">
+        <tr>
+          <th>Name</th>
+          <th>Employee code</th>
+          <th>Work performance</th>
+          <th>Goal achievement</th>
+          <th>Suggestions</th>
+          <th>Comments</th>
+          <th>Review period</th>
+          <th>Review date</th>
+          <th>Action</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of reviews ">
+          <td>{{p.emp_id.name}}</td>
+          <td>{{p.emp_id.emp_code}}</td>
+          <td>{{p.work_performance}}</td>
+          <td>{{p.goal_achivement}}</td>
+          <td>{{p.suggestions}}</td>
+          <td>{{p.comments}}</td>
+          <td>{{p.review_period}}</td>
+          <td>{{p.review_date}}</td>
+          <!-- <td>{{p.employees}}</td> -->
+          <td><a (click)="editReview(p)"><i class="fa fa-pencil"></i></a>
+            <a style="margin-left: 10px;" (click)="deleteReview(p._id)"><i class="fa fa-trash"></i></a>
+          </td>
+          <td><input type="button" value="Assign Employee" (click)="assignEmployee(p)"></td>
+
+        </tr>
+        <tr *ngIf="reviews.length === 0">
+          <td colspan="4" class="text-center">No Records Found</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="container" *ngIf="showReviewForm">
   <div className="login-wrapper">
     <h1>Add review</h1>
     <form [formGroup]="reviewForm" (submit)="addReview()">
@@ -94,7 +100,7 @@
         </div>
       </div>
       <div class="row" *ngIf="assignEmp">
-        <div class="col-sm-4">
+        <div class="col-md-5">
           <ng-multiselect-dropdown [placeholder]="'Select Options'" [settings]="dropdownSettings"
             style="border-radius: 2em !important;" [data]="dropdownList" [(ngModel)]="selectedItems"
             [ngModelOptions]="{standalone: true}">
@@ -102,8 +108,8 @@
         </div>
       </div>
 
-      <div>
-        <button type="submit">Submit</button>
+      <div class="mt-3">
+        <button class="btn btn-primary" type="submit">Submit</button>
       </div>
     </form>
   </div>

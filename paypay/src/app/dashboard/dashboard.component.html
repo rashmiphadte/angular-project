@@ -1,8 +1,12 @@
-<h1>this is dashboard</h1>
-<ul *ngIf="role === '1'">
-  <li><a [routerLink]="['/employee']">Employee</a></li>
-  <li><a [routerLink]="['/reviews']">Reviews</a></li>
-</ul>
-<ul *ngIf="role === '0'">
-  <li><a [routerLink]="['/assigned-review']">Reviews</a></li>
-</ul>
+<div class="container">
+  <h1>Dashboard</h1>
+  <ul *ngIf="role === '1'">
+    <li><a [routerLink]="['/employee']">Employee</a></li>
+    <li><a [routerLink]="['/reviews']">Reviews</a></li>
+    <li><a [routerLink]="['/']">Logout</a></li>
+  </ul>
+  <ul *ngIf="role === '0'">
+    <li><a [routerLink]="['/assigned-review']">Reviews</a></li>
+    <li><a [routerLink]="['/']">Logout</a></li>
+  </ul>
+</div>

@@ -1,38 +1,43 @@
-<div>
-  <table class="table table-hover">
-    <thead class="text-dark text-bold">
-      <tr>
-        <th>Name</th>
-        <th>Employee code</th>
-        <th>Work performance</th>
-        <th>Goal achievement</th>
-        <th>Suggestions</th>
-        <th>Comments</th>
-        <th>Review period</th>
-        <th>Review date</th>
-        <!-- <th>Assigned Employees</th> -->
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of allreviews">
-        <td>{{p.emp_id.name}}</td>
-        <td>{{p.emp_id.emp_code}}</td>
-        <td>{{p.work_performance}}</td>
-        <td>{{p.goal_achivement}}</td>
-        <td>{{p.suggestions}}</td>
-        <td>{{p.comments}}</td>
-        <td>{{p.review_period}}</td>
-        <td>{{p.review_date}}</td>
-        <!-- <td>{{p.employees}}</td> -->
-        <td><a (click)="submitFeedback()">Submit Feedback</a>
-        </td>
+<div class="container">
+  <div class="ml-3">
+    <a [routerLink]="['/dashboard']" class="mr-3">Dashboard</a>
+  </div>
+  <div class="row">
+    <table class="table table-hover">
+      <thead class="text-dark text-bold">
+        <tr>
+          <th>Name</th>
+          <th>Employee code</th>
+          <th>Work performance</th>
+          <th>Goal achievement</th>
+          <th>Suggestions</th>
+          <th>Comments</th>
+          <th>Review period</th>
+          <th>Review date</th>
+          <!-- <th>Assigned Employees</th> -->
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of allreviews">
+          <td>{{p.emp_id.name}}</td>
+          <td>{{p.emp_id.emp_code}}</td>
+          <td>{{p.work_performance}}</td>
+          <td>{{p.goal_achivement}}</td>
+          <td>{{p.suggestions}}</td>
+          <td>{{p.comments}}</td>
+          <td>{{p.review_period}}</td>
+          <td>{{p.review_date}}</td>
+          <!-- <td>{{p.employees}}</td> -->
+          <td><a (click)="submitFeedback()">Submit Feedback</a>
+          </td>
 
-      </tr>
-      <tr *ngIf="allreviews.length === 0">
-        <td colspan="4" class="text-center">No Records Found</td>
-      </tr>
+        </tr>
+        <tr *ngIf="allreviews.length === 0">
+          <td colspan="4" class="text-center">No Records Found</td>
+        </tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>

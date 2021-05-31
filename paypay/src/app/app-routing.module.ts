@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { LoginComponent } from './login/login.component';
 import { ReviewComponent } from './review/review.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,6 +21,9 @@ const routes: Routes = [
   }, {
     path: "assigned-review",
     component: AssignedReviewComponent
+  }, {
+    path: "signin",
+    component: SignInComponent
   },
 ];
 

@@ -15,6 +15,7 @@ import { ReviewComponent } from './review/review.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AssignedReviewComponent } from './assigned-review/assigned-review.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { AssignedReviewComponent } from './assigned-review/assigned-review.compo
     DashboardComponent,
     EmployeeComponent,
     ReviewComponent,
-    AssignedReviewComponent
+    AssignedReviewComponent,
+    SignInComponent
   ],
   imports: [
     FormsModule,

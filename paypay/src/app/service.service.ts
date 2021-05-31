@@ -19,6 +19,19 @@ export class ServiceService {
     }
     return this.http.post<any>(this.baseUrl + '/user/login', inputs, options);
   }
+
+  signInUser(inputs) {
+    let headers = new HttpHeaders({
+      'Accept': 'application/json, text/plain, application/xml,  */*',
+      "Content-Type": "application/json",
+      'Access-Control-Allow-Headers': 'Content-Type',
+    });
+    let options = {
+      headers: headers
+    }
+    return this.http.post<any>(this.baseUrl + '/user', inputs, options);
+  }
+
   getEmployeeData() {
 
     let token = sessionStorage.getItem('token');

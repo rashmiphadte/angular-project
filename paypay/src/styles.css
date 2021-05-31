@@ -1,7 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 .multiselect-dropdown {
   position: relative !important;
-  width: 13% !important;
+  width: 20% !important;
   font-size: inherit;
   font-family: inherit;
+}
+
+.ml {
+  margin-left: 10px;
+}
+
+a {
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
 }
