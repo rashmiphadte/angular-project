@@ -1,0 +1,31 @@
+{
+  "name": "route-planner-backend",
+  "version": "1.0.0",
+  "description": "Employee Feedback",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {},
+  "author": "",
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "gulp-apidoc-swagger": "^0.2.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.8",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.4.13",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
